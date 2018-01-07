@@ -1,0 +1,5 @@
+1.修改idea安装包下的/bin/idea.vmoptions文件,在文件后追加
+-Dfile.encoding=UTF-8
+
+2.在 IntelliJ IDEA 中的“Run/Debug Configurations”中，修改虚拟机参数“ VM options ”，
+内容与在文件idea.vmoptions中追加的内容相同，皆为-Dfile.encoding=UTF-8
