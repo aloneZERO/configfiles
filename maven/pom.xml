@@ -2,18 +2,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kaishengit</groupId>
-    <artifactId>junit_log</artifactId>
+    <groupId>com.leo.demo</groupId>
+    <artifactId>pom_demo</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <name>POM示例文件</name>
-    <url>http://www.kaishengit.com</url>
+    <url>https://alonezero.github.io</url>
+
+    <profiles>
+        <profile>
+            <!--配置JDK版本-->
+            <id>jdk-1.8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
 
     <properties>
+        <finalName>pom_demo</finalName>
         <junit-version>4.12</junit-version>
 		<servlet-version>3.1.0</servlet-version>
         <jstl-version>1.2</jstl-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -33,12 +52,10 @@
             <artifactId>jstl</artifactId>
             <version>${jstl-version}</version>
         </dependency>
-       
-
-
     </dependencies>
+
     <build>
-        <finalName>junit_log</finalName>
+        <finalName>${finalName}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -51,6 +68,15 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -60,5 +86,22 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!--
+          编译maven项目默认会过滤掉源码目录下的资源或配置文件，
+          导致mybatis自动映射失败，所以需要手动配置
+        -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>
