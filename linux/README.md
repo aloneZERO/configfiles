@@ -1,1 +1,1 @@
-下载相应版本的sources.list, 覆盖/etc/apt/sources.list即可(操作前请做好相应备份)
+涓嬭浇鐩稿簲鐗堟湰鐨剆ources.list, 瑕嗙洊/etc/apt/sources.list鍗冲彲(鎿嶄綔鍓嶈鍋氬ソ鐩稿簲澶囦唤)
