@@ -1,7 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.leo.demo</groupId>
     <artifactId>pom_demo</artifactId>
     <packaging>war</packaging>
@@ -29,7 +29,7 @@
     <properties>
         <finalName>pom_demo</finalName>
         <junit-version>4.12</junit-version>
-		<servlet-version>3.1.0</servlet-version>
+        <servlet-version>3.1.0</servlet-version>
         <jstl-version>1.2</jstl-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -51,6 +51,14 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl-version}</version>
+        </dependency>
+        <!--添加本地依赖-->
+        <dependency>
+            <groupId>local.jar</groupId>
+            <artifactId>sdk</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/sdk4j.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -85,8 +93,42 @@
                     <path>/</path>
                 </configuration>
             </plugin>
+            <!--Javadoc插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <aggregate>true</aggregate>
+                    <charset>UTF-8</charset>
+                    <docencoding>UTF-8</docencoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--源码打包插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-
+        
         <!--
           编译maven项目默认会过滤掉源码目录下的资源或配置文件，
           导致mybatis自动映射失败，所以需要手动配置
@@ -104,4 +146,5 @@
             </resource>
         </resources>
     </build>
+
 </project>
