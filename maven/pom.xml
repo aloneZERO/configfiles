@@ -58,7 +58,7 @@
             <artifactId>sdk</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/sdk4j.jar</systemPath>
+            <systemPath>${pom.basedir}/lib/sdk4j.jar</systemPath>
         </dependency>
     </dependencies>
 
