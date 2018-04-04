@@ -2,6 +2,7 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        
 <configuration>
 
     <settings>
@@ -54,4 +55,5 @@
         <mapper class="com.leo.mapper.TopicMapper"/>
         <mapper class="com.leo.mapper.NodeMapper"/>
     </mappers>
+
 </configuration>
