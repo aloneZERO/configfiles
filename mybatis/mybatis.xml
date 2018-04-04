@@ -4,15 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 打印查询语句(日志级别为DEBUG时生效) -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+
     <!--注册别名-->
     <typeAliases>
-        <typeAlias type="com.kaishengit.pojo.User" alias="User"/>
+        <typeAlias type="com.leo.pojo.User" alias="User"/>
     </typeAliases>
-
 
     <!--环境：开发|测试|线上-->
     <environments default="dev">
-
         <environment id="dev">
             <!--事务管理器-->
             <transactionManager type="JDBC"/>
@@ -26,31 +30,28 @@
         </environment>
 
         <environment id="test">
-            <!--事务管理器-->
             <transactionManager type="JDBC"/>
-            <!--数据库连接池-->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql:///db_21_test"/>
+                <property name="url" value="jdbc:mysql:///db_test"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
             </dataSource>
         </environment>
-
     </environments>
 
     <!--加载Mapper文件-->
-    <!--<mappers>
+    <!--
+    <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/NodeMapper.xml"/>
         <mapper resource="mapper/TopicMapper.xml"/>
-    </mappers>-->
-
-    <mappers>
-        <mapper class="com.kaishengit.mapper.UserMapper"/>
-        <mapper class="com.kaishengit.mapper.TagMapper"/>
-        <mapper class="com.kaishengit.mapper.TopicMapper"/>
-        <mapper class="com.kaishengit.mapper.NodeMapper"/>
     </mappers>
-
+    -->
+    <mappers>
+        <mapper class="com.leo.mapper.UserMapper"/>
+        <mapper class="com.leo.mapper.TagMapper"/>
+        <mapper class="com.leo.mapper.TopicMapper"/>
+        <mapper class="com.leo.mapper.NodeMapper"/>
+    </mappers>
 </configuration>
