@@ -31,7 +31,7 @@ ENV="JAVA_HOME=/usr/lib/jvm/jdk8 \
   TEZ_JARS=/home/hadoop/software/tez-${TEZ_VERSION}\
   SPARK_HOME=/home/hadoop/software/spark-${SPARK_HADOOP_VERSION}-bin-hadoop2.6\
   SPARK_CONF_DIR=/home/hadoop/conf\
-  SPARK_MASTER_IP=172.31.151.121\
+  SPARK_MASTER_IP=10.0.1.5\
   SPARK_MASTER_HOST=hadoop-vm1\
   SPARK_LOCAL_DIRS=/home/hadoop/storage/data/spark/rdds_shuffle\
   SPARK_LOG_DIR=/home/hadoop/logs/spark\
@@ -61,6 +61,8 @@ export PATH=/home/hadoop/software/hadoop-${COMMON_VERSION}/bin:/home/hadoop/soft
 export LD_LIBRARY_PATH=${HADOOP_COMMON_HOME}/share/hadoop/common/lib/native/:${LD_LIBRARY_PATH}
 export JAVA_LIBRARY_PATH=${LD_LIBRARY_PATH}
 
+export PYSPARK_PYTHON=python3
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 
 start_hdfs(){
     printf "\n==== START HDFS daemons ! ====\n"
