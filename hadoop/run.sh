@@ -62,7 +62,8 @@ export LD_LIBRARY_PATH=${HADOOP_COMMON_HOME}/share/hadoop/common/lib/native/:${L
 export JAVA_LIBRARY_PATH=${LD_LIBRARY_PATH}
 
 export PYSPARK_PYTHON=python3
-export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.1-src.zip:$PYTHONPATH
+export PYTHONHASHSEED=0
 
 start_hdfs(){
     printf "\n==== START HDFS daemons ! ====\n"
