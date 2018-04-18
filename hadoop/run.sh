@@ -35,7 +35,8 @@ ENV="JAVA_HOME=/usr/lib/jvm/jdk8 \
   SPARK_MASTER_HOST=hadoop-vm1\
   SPARK_LOCAL_DIRS=/home/hadoop/storage/data/spark/rdds_shuffle\
   SPARK_LOG_DIR=/home/hadoop/logs/spark\
-  SPARK_WORKER_DIR=/home/hadoop/logs/apps_spark"
+  SPARK_WORKER_DIR=/home/hadoop/logs/apps_spark\
+  ZEPPELIN_HOME=/home/hadoop/zeppelin"
 
 case "$1" in
   (-q|--quiet)
@@ -120,9 +121,6 @@ start_hive(){
     printf "\n==== START Hive metastore ! ====\n"
     $HIVE_HOME/bin/hive --service metastore &
 }
-# stop_hive() {
-#     printf "\n==== STOP Hive metastore ! ====\n"
-# }
 
 start_zeppelin(){
     printf "\n==== START Zeppelin server ! ====\n"
