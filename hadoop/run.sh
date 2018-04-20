@@ -9,6 +9,7 @@ HDFS_VERSION=${HDFS_VERSION:-${VER}}
 YARN_VERSION=${YARN_VERSION:-${VER}}
 
 SPARK_HADOOP_VERSION=2.0.0
+SPARK_BENCH_VERSION=0.4.0
 
 HIVE_VERSION=${HIVE_VERSION:-1.2.1}
 TEZ_VERSION=${TEZ_VERSION:-0.7.1-SNAPSHOT-minimal}
@@ -26,16 +27,17 @@ ENV="JAVA_HOME=/usr/lib/jvm/jdk8 \
   HADOOP_HOME=/home/hadoop/software/hadoop-${COMMON_VERSION} \
   HADOOP_BIN_PATH=/home/hadoop/software/hadoop-${COMMON_VERSION}/bin \
   HADOOP_SBIN=/home/hadoop/software/hadoop-${COMMON_VERSION}/bin \
-  HIVE_HOME=/home/hadoop/software/hive-1.2.1 \
-  TEZ_CONF_DIR=/home/hadoop/software/conf \
+  HIVE_HOME=/home/hadoop/software/hive-${HIVE_VERSION} \
+  TEZ_CONF_DIR=/home/hadoop/conf \
   TEZ_JARS=/home/hadoop/software/tez-${TEZ_VERSION}\
   SPARK_HOME=/home/hadoop/software/spark-${SPARK_HADOOP_VERSION}-bin-hadoop2.6\
   SPARK_CONF_DIR=/home/hadoop/conf\
-  SPARK_MASTER_IP=10.0.1.5\
+  SPARK_MASTER_IP=2.3.3.3\
   SPARK_MASTER_HOST=hadoop-vm1\
   SPARK_LOCAL_DIRS=/home/hadoop/storage/data/spark/rdds_shuffle\
   SPARK_LOG_DIR=/home/hadoop/logs/spark\
   SPARK_WORKER_DIR=/home/hadoop/logs/apps_spark\
+  SPARK_BENCH_HOME=/home/hadoop/software/spark-bench_${SPARK_BENCH_VERSION}\
   ZEPPELIN_HOME=/home/hadoop/zeppelin"
 
 case "$1" in
@@ -58,7 +60,7 @@ esac
 export HADOOP_CLASSPATH=$HADOOP_HOME:$HADOOP_CONF_DIR:$HIVE_HOME:$TEZ_JARS/*:$TEZ_JARS/lib/*:/home/hadoop/cora-hadoop-plugin/lib/*:
 export HADOOP_HEAPSIZE=10240
 
-export PATH=/home/hadoop/software/hadoop-${COMMON_VERSION}/bin:/home/hadoop/software/hadoop-${COMMON_VERSION}/sbin:$HIVE_HOME/bin:/home/hadoop/software/spark-${SPARK_HADOOP_VERSION}-bin-hadoop2.6/bin:/home/hadoop/software/spark-${SPARK_HADOOP_VERSION}-bin-hadoop2.6/sbin:$PATH
+export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$SPARK_BENCH_HOME/bin:$PATH
 export LD_LIBRARY_PATH=${HADOOP_COMMON_HOME}/share/hadoop/common/lib/native/:${LD_LIBRARY_PATH}
 export JAVA_LIBRARY_PATH=${LD_LIBRARY_PATH}
 
