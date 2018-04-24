@@ -1,6 +1,5 @@
 <configuration>
 
- 
   <property>
     <name>hive.session.history.enabled</name>
     <value>true</value>
@@ -9,7 +8,7 @@
 
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:mysql://MASTER_IP:3306/metastore?createDatabaseIfNotExist=true</value>
+    <value>jdbc:mysql://master:3306/metastore?createDatabaseIfNotExist=true</value>
     <description>the URL of the MySQL database</description>
   </property>
 

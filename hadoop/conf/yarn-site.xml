@@ -4,25 +4,25 @@
 
 <configuration>
 
- <property>
-   <name>yarn.timeline-service.hostname</name>
-   <value>Master</value>
- </property>
+  <property>
+    <name>yarn.timeline-service.hostname</name>
+    <value>master</value>
+  </property>
 
- <property>
-   <name>yarn.timeline-service.address</name>
-   <value>Master:10200</value>
- </property>
+  <property>
+    <name>yarn.timeline-service.address</name>
+    <value>master:10200</value>
+  </property>
 
- <property>
-   <name>yarn.timeline-service.webapp.address</name>
-   <value>Master:8188</value>
- </property>
+  <property>
+    <name>yarn.timeline-service.webapp.address</name>
+    <value>master:8188</value>
+  </property>
 
- <property>
-   <name>yarn.timeline-service.webapp.https.address</name>
-   <value>Master:8190</value>
- </property>
+  <property>
+    <name>yarn.timeline-service.webapp.https.address</name>
+    <value>master:8190</value>
+  </property>
 
   <property>
     <name>yarn.nodemanager.aux-services</name>
@@ -36,27 +36,27 @@
 
   <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>Master:8031</value>
- </property>
+    <value>master:8031</value>
+  </property>
 
   <property>
     <name>yarn.resourcemanager.scheduler.address</name>
-    <value>Master:8030</value>
+    <value>master:8030</value>
   </property>
 
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>Master:8032</value>
- </property>
+    <value>master:8032</value>
+  </property>
 
- <property>
-  <name>yarn.resourcemanager.hostname</name>
-  <value>Master</value>
- </property>
+  <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>master</value>
+  </property>
 
- <property>
-   <name>yarn.resourcemanager.webapp.address</name>
-   <value>Master:8088</value>
+  <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>master:8088</value>
   </property>
 
   <property>
@@ -64,10 +64,10 @@
     <value>/home/hadoop/data/yarn_nm</value>
   </property>
 
- <property>
-   <name>yarn.nodemanager.remote-app-log-dir</name>
-   <value>/app-logs</value>
- </property>
+  <property>
+    <name>yarn.nodemanager.remote-app-log-dir</name>
+    <value>/app-logs</value>
+  </property>
 
   <property>
     <name>yarn.nodemanager.remote-app-log-dir-suffix</name>
