@@ -7,12 +7,12 @@
 
   <property>
     <name>dfs.namenode.name.dir</name>
-    <value>/home/hadoop/data/hdfs/hdfs_nn_dir</value>
+    <value>/home/hadoop/storage/data/hdfs/hdfs_nn_dir</value>
   </property>
 
   <property>
     <name>dfs.datanode.data.dir</name>
-    <value>/home/hadoop/data/hdfs/hdfs_dn_dir</value>
+    <value>/home/hadoop/storage/data/hdfs/hdfs_dn_dir</value>
   </property>
 
   <property>

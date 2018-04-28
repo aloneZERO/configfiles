@@ -1,6 +1,6 @@
 #!/bin/bash
-target=$HADOOP_HOME/logs
+LOG_PATH=$HADOOP_HOME/logs
 
-echo -e "=== Clean hadoop logs  ===\n"
-ls $target
-rm $target/*
+printf "=== Clean hadoop logs  ===\n"
+ls $LOG_PATH
+rm $LOG_PATH/*

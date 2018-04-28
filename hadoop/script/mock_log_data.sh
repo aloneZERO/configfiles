@@ -1,7 +1,6 @@
 #!/bin/sh
 
-function random()
-{
+function random() {
   echo $(($RANDOM%$1+1))
 }
 
@@ -25,5 +24,3 @@ do
     access_time=$(date +%Y%-m%-d%H:%M:%S)
     echo -e "$i,$ip_1$ip_2$ip_3$ip_4,$access_time,$access_cnt\n">>$file_name
 done;
-
-

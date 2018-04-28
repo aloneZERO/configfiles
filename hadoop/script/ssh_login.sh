@@ -8,14 +8,14 @@ ssh_login(){
         2) printf "Starting login hadoop@10.0.1.$2\n"
             ssh hadoop@10.0.1.$2
         ;;
-        o) printf "Starting login OpenStack\n"
-            ssh iii@172.31.119.105
+        o) printf "Starting login other@172.31.233.$2\n"
+            ssh iii@172.31.233.$2
         ;;
-        h) printf "ssh_login 1 <num>: ssh hadoop@172.31.151.<num>\n"
-            printf "ssh_login 2 <num>: ssh hadoop@10.0.1.<num>\n"
-            printf "ssh_login o: ssh login to OpenStack-VM\n"
+        h) printf "ssh_login 1 <n>: ssh hadoop@172.31.151.<n>\n"
+           printf "ssh_login 2 <n>: ssh hadoop@10.0.1.<n>\n"
+           printf "ssh_login o <n>: ssh other@172.31.233.<n>\n"
         ;;
     esac
 }
 
-export -f ssh_login
+export -f ssh-login

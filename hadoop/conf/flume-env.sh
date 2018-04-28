@@ -3,7 +3,7 @@
 
 # Enviroment variables can be set here.
 
-export JAVA_HOME=/home/hadoop/softwares/jdk/jdk1.8.0_131
+export JAVA_HOME=/home/hadoop/softwares/jdk/jdk8
 
 # Give Flume more memory and pre-allocate, enable remote monitoring via JMX
 export JAVA_OPTS="-Xms100m -Xmx200m -Dcom.sun.management.jmxremote"

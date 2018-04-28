@@ -61,7 +61,7 @@
 
   <property>
     <name>yarn.nodemanager.local-dirs</name>
-    <value>/home/hadoop/data/yarn_nm</value>
+    <value>/home/hadoop/storage/data/yarn_nm</value>
   </property>
 
   <property>

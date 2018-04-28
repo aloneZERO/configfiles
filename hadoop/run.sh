@@ -28,16 +28,17 @@ ENV="JAVA_HOME=/usr/lib/jvm/jdk8 \
   HADOOP_BIN_PATH=/home/hadoop/software/hadoop-${COMMON_VERSION}/bin \
   HADOOP_SBIN=/home/hadoop/software/hadoop-${COMMON_VERSION}/bin \
   HIVE_HOME=/home/hadoop/software/hive-${HIVE_VERSION} \
+  HIVE_LOG_DIR=/home/hadoop/logs/hive \
   TEZ_CONF_DIR=/home/hadoop/conf \
-  TEZ_JARS=/home/hadoop/software/tez-${TEZ_VERSION}\
-  SPARK_HOME=/home/hadoop/software/spark-${SPARK_HADOOP_VERSION}-bin-hadoop2.6\
-  SPARK_CONF_DIR=/home/hadoop/conf\
-  SPARK_MASTER_IP=2.3.3.3\
-  SPARK_MASTER_HOST=hadoop-vm1\
-  SPARK_LOCAL_DIRS=/home/hadoop/storage/data/spark/rdds_shuffle\
-  SPARK_LOG_DIR=/home/hadoop/logs/spark\
-  SPARK_WORKER_DIR=/home/hadoop/logs/apps_spark\
-  SPARK_BENCH_HOME=/home/hadoop/software/spark-bench_${SPARK_BENCH_VERSION}\
+  TEZ_JARS=/home/hadoop/software/tez-${TEZ_VERSION} \
+  SPARK_HOME=/home/hadoop/software/spark-${SPARK_HADOOP_VERSION}-bin-hadoop2.6 \
+  SPARK_CONF_DIR=/home/hadoop/conf \
+  SPARK_MASTER_IP=2.3.3.3 \
+  SPARK_MASTER_HOST=hadoop-vm1 \
+  SPARK_LOCAL_DIRS=/home/hadoop/storage/data/spark/rdds_shuffle \
+  SPARK_LOG_DIR=/home/hadoop/logs/spark \
+  SPARK_WORKER_DIR=/home/hadoop/logs/apps_spark \
+  SPARK_BENCH_HOME=/home/hadoop/software/spark-bench_${SPARK_BENCH_VERSION} \
   ZEPPELIN_HOME=/home/hadoop/zeppelin"
 
 case "$1" in
@@ -121,7 +122,11 @@ stop_spark(){
 
 start_hive(){
     printf "\n==== START Hive metastore ! ====\n"
-    $HIVE_HOME/bin/hive --service metastore &
+    nohup $HIVE_HOME/bin/hive --service metastore >> $HIVE_LOG_DIR/metastore.log 2>&1 &
+    echo $! > /home/hadoop/logs/hive/hive-metastore.pid
+    printf "\n==== START Hive server ! ====\n"
+    nohup $HIVE_HOME/bin/hive --service hiveserver2 >> $HIVE_LOG_DIR/hiveserver.log 2>&1 &
+    echo $! > /home/hadoop/logs/hive/hive-server.pid
 }
 
 start_zeppelin(){
