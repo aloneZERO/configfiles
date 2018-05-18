@@ -120,6 +120,15 @@ stop_spark(){
     $SPARK_HOME/sbin/stop-all.sh
 }
 
+start_history_spark(){
+    printf "\n==== Star Spark History Server ! ====\n"
+    $SPARK_HOME/sbin/start-history-server.sh
+}
+stop_history_spark(){
+    printf "\n==== Stop Spark History Server ! ====\n"
+    $SPARK_HOME/sbin/stop-history-server.sh
+}
+
 start_hive(){
     printf "\n==== START Hive metastore ! ====\n"
     nohup $HIVE_HOME/bin/hive --service metastore >> $HIVE_LOG_DIR/metastore.log 2>&1 &
@@ -144,11 +153,13 @@ start_all(){
     start_timeline_server
     start_history_mr
     start_spark
+    start_history_spark
     start_hive
     start_zeppelin
 }
 stop_all(){
     stop_zeppelin
+    stop_history_spark
     stop_spark
     stop_hdfs
     stop_yarn
@@ -173,6 +184,8 @@ export -f start_timeline_server
 export -f stop_timeline_server
 export -f start_spark
 export -f stop_spark
+export -f start_history_spark
+export -f stop_history_spark
 export -f start_zeppelin
 export -f stop_zeppelin
 export -f start_all
