@@ -9,11 +9,15 @@
 	required = true
 [gui]
 	tabsize = 4
-	recentrepo = D:/Documents/GitHub/Hello-GitHub
+	recentrepo = C:/Users/Administrator/Desktop/wecard
+	fontui = -family 微软雅黑 -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	encoding = utf-8
+	fontdiff = -family \"YaHei Consolas Hybrid\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	recentrepo = C:/Users/Administrator/Desktop/Recent/WeCard/wecard-backend
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Crest -%C(yellow)%d%Crest%s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset%s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [core]
-	editor = 'F:/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+	# editor = 'F:/Favorite/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 	quotepath = false
 	autocrlf = true
 [color]
@@ -22,3 +26,5 @@
 	default = upstream
 [merge]
 	conflicstyle = diff3
+[winUpdater]
+	recentlySeenVersion = 2.16.3.windows.1
